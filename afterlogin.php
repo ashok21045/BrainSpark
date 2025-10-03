@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-// Example: alert देखाउने
-if (isset($_SESSION['showalert']) && $_SESSION['showalert']) {
+
+if ($_SESSION['showalert']) {
     echo '<div class="alert alert-success alert-dismissible fade show text-center fixed-top m-0 rounded-0" role="alert">
         <strong>You have successfully signed in.</strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -125,6 +125,7 @@ if (isset($_SESSION['showalert']) && $_SESSION['showalert']) {
 </head>
 
 <body>
+
     <div class="wrapper">
         <div class="login-container">
             <div class="brand">

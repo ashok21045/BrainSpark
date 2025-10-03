@@ -89,7 +89,7 @@
             ;
             justify-content: space-around;
             align-items: center;
-            height: 200px;
+            height: 210px;
             width: 100%;
 
         }
@@ -148,9 +148,15 @@
             text-align: center;
             background-color: #0f172a;
             color: rgb(156, 146, 133);
-            height: 210px;
+            height: 230px;
             padding-top: 20px;
         }
+
+
+
+        
+
+
     </style>
 
 </head>
@@ -164,7 +170,7 @@
                 <h2 class="logo-title">BrainSpark</h2>
             </div>
             <p class="tagline">Ignite Your Mind. Play. Guess. Win.</p>
-            <button class="start_button"> <a href="login.php">Get Started</a></button>
+           <button class="start_button"><a href="login.php" style="text-decoration: none; color: rgba(225, 232, 237, 1);"> Get Started</a></button>
         </div>
 
     </header>

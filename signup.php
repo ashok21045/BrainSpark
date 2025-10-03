@@ -1,51 +1,75 @@
-
 <?php
+$showalert = false;
+$showfail = false;
+  $showalready= false;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-include 'partials/_test.php';
+    include 'partials/_test.php';
 
-$username = $_POST["username"];
-$password =  $_POST["password"];
-$cpassword   =  $_POST["cpassword"];
-$exist = false;
-// if (($password==$cpassword) && $exist==false) {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $cpassword = $_POST["cpassword"];
+    $exist = false;
+    
+    $sql1= "Select * from user where username= '$username' ";
+    $res = mysqli_query($conn, $sql1);
+    $num = mysqli_num_rows($res);
+    if($num==1){
+        $exist = true;
+    }
+
+    if(($cpassword==$password) && $exist==false){
+
     $sql = "INSERT INTO `user` (`username`, `password`, `cpassword`) VALUES ('$username', '$password', '$cpassword')";
     $result= mysqli_query($conn, $sql);
-    if($result){
-        echo "donee!";
 
-    }
+    if($result){
+        $showalert = true;
+        session_start();
+        $_SESSION['showalert']= true;
+        header("Location: afterlogin.php");
+
+    } 
     else{
-        echo "not injected";
+        echo 'database error';
     }
 }
+    else{
+        if($cpassword!=$password){
+            $showfail= true;
+        }
+        else{
+            $showalready= true;
+        }
+    }
+    
 
-
-
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrainSpark | SignUp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
     <style>
         * {
             box-sizing: border-box;
         }
 
-        body {
+        .main-wrapper {
             margin: 0;
             font-family: "Poppins", sans-serif;
             background-color: #0f172a;
             color: white;
+            min-height: 100vh;
+            padding-top: 100px; /* alert space */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
         }
 
         .signup-container {
@@ -73,11 +97,6 @@ $exist = false;
 
         .logo-title {
             font-size: 2rem;
-            color: #38bdf8;
-        }
-
-        .signup-container h2 {
-            margin: 10px 0;
             color: #38bdf8;
         }
 
@@ -120,46 +139,51 @@ $exist = false;
         .signup-btn:hover {
             background-color: #0ea5e9;
         }
-
-       
-
-
-        /* bootstrap css */
-         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
-       
     </style>
 </head>
-
 <body>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-    <div class="signup-container">
-        <div class="brand">
-            <img src="logo.png" alt="BrainSpark Logo" class="logo">
-            <h2 class="logo-title">BrainSpark</h2>
+    <?php
+
+     if ($showfail){
+            // Alert at top
+        echo '  <div class="alert alert-danger alert-dismissible fade show text-center fixed-top m-0 rounded-0" role="alert">
+        <strong> Sorry! your password dosen\'t matchh.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>';
+    }
+     if ($showalready){
+            // Alert at top
+        echo '  <div class="alert alert-danger alert-dismissible fade show text-center fixed-top m-0 rounded-0" role="alert">
+        <strong> Sorry! username already taken.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>';
+    }
+    ?>
+
+
+    <!-- All content inside wrapper -->
+    <div class="main-wrapper">
+        <div class="signup-container">
+            <div class="brand">
+                <img src="logo.png" alt="BrainSpark Logo" class="logo">
+                <h2 class="logo-title">BrainSpark</h2>
+            </div>
+
+            <form class="signup-form" action="signup.php" method="POST">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+                <label for="cpassword">Confirm Password</label>
+                <input type="password" id="cpassword" name="cpassword" placeholder="Re-Enter password" required>
+
+                <button type="submit" class="signup-btn">Sign Up</button>
+            </form>
         </div>
-
-        <form class="signup-form" action= "signup.php" method= "POST">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter username" required>
-
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter password" required>
-            <label for="cpassword">Conform Password</label>
-            <input type="password" id="cpassword" name="cpassword" placeholder="Re-Enter password" required>
-
-            <button type="submit" class="signup-btn">Sign Up</button>
-        </form>
-
-        
     </div>
 
-
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
- 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
-
 </html>

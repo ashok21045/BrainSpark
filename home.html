@@ -1,23 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <?php
-    session_start();
-    
-    if (!isset($_SESSION['exist']) || $_SESSION['exist'] != true) {
-        header("Location: login.php");
-        exit();
-    }
-    ?>
-
-
-
-
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainSpark - Home</title>
+  <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
 
     body {
@@ -139,14 +126,7 @@
       color: #aaa;
     }
   </style>
-
-
-
-
 </head>
-
-  
-    
 <body>
   <header>
     <div class="brand">
@@ -154,8 +134,8 @@
       <h1>BrainSpark</h1>
     </div>
     <div class="user-info">
-      Welcome, <strong> <?php echo $_SESSION['username']; ?></strong> 
-      <button class="logout" onclick="window.location.href='logout.php'">Logout</button>
+      Welcome, <strong>User</strong> 
+      <button class="logout">Logout</button>
     </div>
   </header>
 
@@ -178,19 +158,5 @@
   <footer>
     © 2025 BrainSpark | Ignite Your Mind
   </footer>
-
-<?php
-
-session_unset();
-session_destroy();
-?>
-
-<script>
-    function logout(){
-        header("Location: logout.php");
-    }
-
-    </script>
-
 </body>
 </html>

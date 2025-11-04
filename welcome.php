@@ -23,8 +23,7 @@
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #16222A, #3A6073);
-      color: #fff;
+   background: linear-gradient(120deg, #0a1316ff 0%, #0c1c3cff 100%);      color: #fff;
       display: flex;
       flex-direction: column;
       min-height: 100vh;

@@ -1,206 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrainSpark</title>
-    <!-- css started -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        html,
         body {
             margin: 0;
-            padding: 0;
-            font-family: "Poppins", sans-serif;
-
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(120deg, #0a1316ff 0%, #0c1c3cff 100%);
+            color: #fff;
+            min-height: 100vh;
         }
-
-        .hero {
-
-            height: 300px;
-            width: 100%;
-            background: #0f172a;
+        .navbar {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            padding: 10px 48px 0 48px;
+            
         }
-
-        .container {
-            height: 90%;
-            width: 30%;
+        .logo-group {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            gap: 13px;
+           
         }
+        .logo-group img {
+            height: 80px;
+            width: auto;
+            display: block;
+        }
+        .logo-group .brand-text {
+            font-weight: 700;
+            font-size: 2rem;
+             color: #ffd369;
+            font-family: 'Poppins', sans-serif;
+            /* letter-spacing: 1px; */
 
-        .brand {
+        }
+        .menu {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 25%;
-            width: 80%;
+            gap: 36px;
         }
-
-        .logo {
-            height: 10vh;
-            width: 10vh;
-        }
-
-        .logo-title {
-            color: #38bdf8;
-            font-size: 3rem;
-        }
-
-        .tagline {
-            color: rgb(156, 146, 133);
-            font-size: 1.2rem;
-            margin-top: -2px;
-            margin-left: 15px;
-        }
-
-        .start_button {
-            height: 17%;
-            width: 40%;
-            border-radius: 7px;
-            background-color: #38bdf8;
-            color: aliceblue;
-            font-weight: 600;
-            font-size: large;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-
-        .start_button:hover {
-            transform: scale(1.03);
-        }
-
-
-        /* mid section */
-
-        .container_cards {
-
-            display: flex;
-            background-color: #1c283a;
-            ;
-            justify-content: space-around;
-            align-items: center;
-            height: 390px;
-            width: 100%;
-
-        }
-
-        .card {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #0f172a;
-            height: 55%;
-            width: 35%;
-            border-radius: 12px;
-
-        }
-
-        .card--wordle {
-            margin-right: -45px;
-        }
-
-        .card--quiz {
-            margin-left: -45px;
-        }
-
-        .card a {
-            display: flex;
-            /* let the link behave like the card’s content */
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
+        .menu a {
+            color: #fff;
             text-decoration: none;
-            /* remove underline */
-            color: white;
-            /* keep the card text color */
-            height: 100%;
-            width: 100%;
-
+            font-weight: 600;
+            font-size: 1.14rem;
+            transition: opacity 0.2s;
         }
-
-        .card {
+        .menu a:hover {
+            opacity: 0.6;
+        }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 100px;
+        }
+        .main-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .main-content p {
+            font-size: 1.19rem;
+            margin-bottom: 28px;
+            text-align: center;
+            max-width: 450px;
+            line-height: 1.31;
+        }
+        .start-btn {
+            background: #5cdfb2ff;
+            color: #000000ff;
+            border: none;
+            border-radius: 28px;
+            font-size: 1.31rem;
+            font-weight: bold;
+            padding: 19px 57px;
             cursor: pointer;
-            transition: transform 0.2s ease;
+            margin-bottom: 48px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+            transition: background 0.2s;
+        }
+        .start-btn:hover {
+            background: #1cd3aeff;
+        }
+        .game-panels {
+            display: flex;
+            gap: 38px;
+            justify-content: center;
+        }
+        .panel {
+            background: rgba(255,255,255,0.08);
+            border-radius: 22px;
+            padding: 32px 38px;
+            min-width: 260px;
+            height: 200px;
+            text-align: center;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .panel h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 13px;
+        }
+        .panel p {
+            font-size: 1.1rem;
+            margin-bottom: 22px;
+            color: #e5f2ff;
+        }
+        .play-btn {
+            background: #5cdfb2ff;
+            color: #262626;
+            border: none;
+            border-radius: 22px;
+            font-size: 1.13rem;
+            font-weight: 700;
+            padding: 14px 34px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .play-btn:hover {
+            background: #1cd3aeff;
         }
 
-        .card:hover {
-            transform: scale(1.03);
-        }
-
-
-
-        /* footer */
-
-        .footer {
+           .footer {
 
             text-align: center;
-            background-color: #0f172a;
             color: rgb(156, 146, 133);
-            height: 50px;
+           
             padding-top: 20px;
+            padding-bottom: 20px;
+            background: #031921ff ;
         }
 
+
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px 16px 0 16px;
+            }
+            .logo-group .brand-text {
+                font-size: 1.3rem;
+            }
+            .main-content h1 {
+                font-size: 2rem;
+            }
+            .start-btn {
+                font-size: 1rem;
+                padding: 13px 22px;
+            }
+            .game-panels {
+                flex-direction: column;
+                gap: 22px;
+                width: 94vw;
+                align-items: center;
+            }
+            .panel {
+                min-width: unset;
+                width: 100%;
+                padding: 22px 7px;
+            }
+        }
+    
 
 
         
 
-
     </style>
-
 </head>
-
 <body>
-
-    <header class="hero">
-        <div class="container">
-            <div class="brand">
-                <img src="logo.png" alt="BrainSpark-Logo" class="logo">
-                <h2 class="logo-title">BrainSpark</h2>
-            </div>
-            <p class="tagline">Ignite Your Mind. Play. Guess. Win.</p>
-           <button class="start_button" onclick="window.location.href='login.php'">login</button>
+    <nav class="navbar">
+        <div class="logo-group">
+            <img src="logo.png" alt="BrainSpark Logo">
+            <span class="brand-text">BrainSpark</span>
         </div>
-
-    </header>
-    <!-- header end  -->
-
-    <!-- body starts -->
-
-
-    <section id="games" class="section-games">
-        <div class="container_cards">
-            <div class="card card--wordle">
-                <a href="wordle.html">
-                    <h2 style="margin: 0px;padding: 5px;">Wordle</h2>
-                    <p style="margin: 0px;padding: 5px;">Guess the secret 5-letter word in 6 tries!</p>
-                </a>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">Games</a>
+            <a href="#">About</a>
+            <a href="#">Login</a>
+        </div>
+    </nav>
+    <hr style = " background-color: #464545ff; height: 1px; border: none;">
+    <section class="main-content">
+        <h1>Ignite Your Mind <span>🔥</span></h1>
+        <p>Play Wordle & Quiz. Challenge your brain, compete with friends, and win!</p>
+        <button class="start-btn" onclick="window.location.href='login.php'">Start Playing</button>
+        <div class="game-panels">
+            <div class="panel">
+                <h2>Wordle</h2>
+                <p>Guess the word in limited tries!</p>
+                <button class="play-btn">Play Now</button>
             </div>
-            <div class="card card--quiz">
-                <a href="quiz.html">
-                    <h2 style="margin: 0px;padding: 5px;">Quiz</h2>
-                    <p style="margin: 0px;padding: 5px;">Test your knowledge with fun quizzes.</p>
-                </a>
+            <div class="panel">
+                <h2>Quiz</h2>
+                <p>Test your knowledge & beat the clock!</p>
+                <button class="play-btn">Play Now</button>
             </div>
         </div>
     </section>
-
-    <footer class="footer">
+    <hr style = " background-color: #464545ff; height: 1px; border: none;">
+     <footer class="footer">
         © 2025 BrainSpark | Built by Ashok
     </footer>
-
-
 </body>
-
 </html>

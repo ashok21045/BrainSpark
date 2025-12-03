@@ -11,16 +11,16 @@
     <style>
         body {
             margin: 0;
-            background: #e5e2e2;
+            background: #f2efef;
             font-family: Arial, sans-serif;
             padding-top: 80px; 
         }
 
        
-        .navbara {
+       .navbara {
             height: 80px;
             background: white;
-            border-bottom: 2px solid #c3c0c0;
+            border-bottom: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -30,7 +30,10 @@
             top: 0;
             width: 100%;
             z-index: 1000;
+
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.4);
         }
+
 
         .left-section {
             display: flex;
@@ -52,17 +55,21 @@
 
         .menu {
             display: flex;
-            gap: 50px;
+            gap: 0px;
         }
 
         .menu a {
             text-decoration: none;
             font-size: 20px;
             color: #333;
+            padding-left: 25px;
+            padding-right: 25px;
+            border-radius: 9px;
         }
 
         .menu a:hover {
-            color: #0073ff;
+            color: #090909;
+            background-color: #efecec;
         }
 
         .nav-search {
@@ -116,12 +123,29 @@
             padding: 8px 20px;
             border-radius: 20px;
         }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .rating i {
+            color: #f5b810; /* golden yellow */
+            font-size: 18px;
+        }
+
+        .rating span {
+            font-weight: bold;
+            color: #444;
+        }
+
     </style>
 </head>
 
 <body>
 
-<!-- 🔹 YOUR NAVBAR (UNCHANGED) -->
 <header class="navbara">
     <div class="left-section">
         <img src="../partials/logo2.png" alt="Logo" class="logo">
@@ -129,9 +153,9 @@
     </div>
 
     <div class="menu">
-        <a href="#">Home</a>
-        <a href="#">Games</a>
-        <a href="#">About</a>
+        <a href="#">Home</a><span>|</span>
+        <a href="#">Games</a><span>|</span>
+        <a href="#">About</a><span>|</span>
         <a href="#">Logout</a>
     </div>
 
@@ -141,86 +165,254 @@
     </div>
 </header>
 
-<!-- 🔹 MULTIPLE GAME CARDS BELOW NAVBAR -->
 <div class="container mt-5">
 
     <h2 class="fw-bold mb-4">Games</h2>
 
-    <div class="row g-4">
+   <div class="row g-4" style="--bs-gutter-x: 2rem; --bs-gutter-y: 2rem;">
 
-        <!-- Wordle -->
-        <div class="col-md-4">
-            <div class="game-card">
-                <img src="wordle2.jpg" class="game-img">
-                <div class="game-body">
-                    <h4>Wordle</h4>
-                    <p>Guess the secret word in limited tries.</p>
-                    <a href="games/wordle.html" class="btn btn-primary play-btn">Play Now</a>
+    <!-- Wordle -->
+    <div class="col-md-4">
+        <div class="game-card">
+            <img src="wordle2.jpg" class="game-img">
+            <div class="game-body">
+                <h4>Wordle</h4>
+                <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <span>4.8</span>
                 </div>
+                <p>Guess the secret word in limited tries.</p>
+                <a href="games/wordle.html" class="btn btn-dark play-btn">Play Now</a>
             </div>
         </div>
-
-        <!-- Quiz -->
-        <div class="col-md-4">
-            <div class="game-card">
-                <img src="quiz.jpg" class="game-img">
-                <div class="game-body">
-                    <h4>Quiz Master</h4>
-                    <p>Test your knowledge across multiple topics.</p>
-                    <a href="games/quiz.html" class="btn btn-primary play-btn">Start Quiz</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Memory Game -->
-        <div class="col-md-4">
-            <div class="game-card">
-                <img src="word_flip.png" class="game-img">
-                <div class="game-body">
-                    <h4>Memory Flip</h4>
-                    <p>Flip & match cards to boost your memory.</p>
-                    <a href="games/memory.html" class="btn btn-primary play-btn">Play Game</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Typing Game -->
-        <div class="col-md-4">
-            <div class="game-card">
-                <img src="typ.jpg" class="game-img">
-                <div class="game-body">
-                    <h4>Typing Speed</h4>
-                    <p>Improve typing speed & accuracy.</p>
-                    <a href="games/typing.html" class="btn btn-primary play-btn">Start Typing</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Puzzle Game -->
-        <div class="col-md-4">
-            <div class="game-card">
-                <img src="puzzle.jpg" class="game-img">
-                <div class="game-body">
-                    <h4>Puzzle Blocks</h4>
-                    <p>Move blocks & solve creative puzzles.</p>
-                    <a href="games/puzzle.html" class="btn btn-primary play-btn">Play Puzzle</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Snake Game -->
-        <div class="col-md-4">
-            <div class="game-card">
-                <img src="snake.jpg" class="game-img">
-                <div class="game-body">
-                    <h4>Snake And Ladder</h4>
-                    <p>Classic snake arcade – eat, grow, survive!</p>
-                    <a href="games/snake.html" class="btn btn-primary play-btn">Play Snake</a>
-                </div>
-            </div>
-        </div>
-
     </div>
+
+    <!-- Quiz -->
+    <div class="col-md-4">
+        <div class="game-card">
+            <img src="quiz.jpg" class="game-img">
+            <div class="game-body">
+                <h4>Quiz Master</h4>
+                <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <span>4.8</span>
+                </div>
+                <p>Test your knowledge across multiple topics.</p>
+                <a href="games/quiz.html" class="btn btn-dark play-btn">Start Quiz</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Memory Game -->
+    <div class="col-md-4">
+        <div class="game-card">
+            <img src="word_flip.png" class="game-img">
+            <div class="game-body">
+                <h4>Memory Flip</h4>
+                <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                    <span>3.3</span>
+                </div>
+                <p>Flip & match cards to boost your memory.</p>
+                <a href="games/memory.html" class="btn btn-dark play-btn">Play Game</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Typing -->
+    <div class="col-md-4">
+        <div class="game-card">
+            <img src="typ.jpg" class="game-img">
+            <div class="game-body">
+                <h4>Typing Speed</h4>
+                <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                    <span>3.5</span>
+                </div>
+                <p>Improve typing speed & accuracy.</p>
+                <a href="games/typing.html" class="btn btn-dark play-btn">Start Typing</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Puzzle -->
+    <div class="col-md-4">
+        <div class="game-card">
+            <img src="puzzle.jpg" class="game-img">
+            <div class="game-body">
+                <h4>Puzzle Blocks</h4>
+                <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <span>4.8</span>
+                </div>
+                <p>Move blocks & solve creative puzzles.</p>
+                <a href="games/puzzle.html" class="btn btn-dark play-btn">Play Puzzle</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Snake -->
+    <div class="col-md-4">
+        <div class="game-card">
+            <img src="snake.jpg" class="game-img">
+            <div class="game-body">
+                <h4>Snake And Ladder</h4>
+                <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                    <span>3.8</span>
+                </div>
+                <p>Classic snake arcade – eat, grow, survive!</p>
+                <a href="games/snake.html" class="btn btn-dark play-btn">Play Snake</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sudoku -->
+    <div class="col-md-4">
+        <div class="game-card">
+            <img src="soduku.jpg" class="game-img">
+            <div class="game-body">
+                <h4>Sudoku</h4>
+                <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                    <span>3.5</span>
+                </div>
+                <p>Use logic to fill the number grid.</p>
+                <a href="games/sudoku.html" class="btn btn-dark play-btn">Play Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tic Tac Toe -->
+    <div class="col-md-4">
+        <div class="game-card">
+            <img src="tiktactoe.jpg" class="game-img">
+            <div class="game-body">
+                <h4>Tic Tac Toe</h4>
+                <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star"></i>
+                    <i class="bi bi-star"></i>
+                    <span>3.0</span>
+                </div>
+                <p>Classic game against friend or AI.</p>
+                <a href="games/tictactoe.html" class="btn btn-dark play-btn">Play</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hangman -->
+    <div class="col-md-4">
+        <div class="game-card">
+            <img src="hangman.jpg" class="game-img">
+            <div class="game-body">
+                <h4>Hangman</h4>
+                <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                    <span>3.8</span>
+                </div>
+                <p>Guess the hidden word carefully.</p>
+                <a href="games/hangman.html" class="btn btn-dark play-btn">Play Hangman</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Minesweeper -->
+    <div class="col-md-4">
+        <div class="game-card">
+            <img src="minesweeper.jpg" class="game-img">
+            <div class="game-body">
+                <h4>Minesweeper</h4>
+                <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                    <span>3.7</span>
+                </div>
+                <p>Avoid the hidden mines using logic.</p>
+                <a href="games/minesweeper.html" class="btn btn-dark play-btn">Play Mines</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2048 -->
+    <div class="col-md-4">
+        <div class="game-card">
+            <img src="2048.jpg" class="game-img">
+            <div class="game-body">
+                <h4>2048</h4>
+                <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                    <span>3.5</span>
+                </div>
+                <p>Merge tiles to reach the 2048 block.</p>
+                <a href="games/2048.html" class="btn btn-dark play-btn">Play 2048</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Space Shooter -->
+    <div class="col-md-4">
+        <div class="game-card">
+            <img src="spaceshooter.jpg" class="game-img">
+            <div class="game-body">
+                <h4>Space Shooter</h4>
+                <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star"></i>
+                    <span>4.0</span>
+                </div>
+                <p>Shoot asteroids and survive in space!</p>
+                <a href="games/spaceshooter.html" class="btn btn-dark play-btn">Start Shooting</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 </div>
 
 </body>

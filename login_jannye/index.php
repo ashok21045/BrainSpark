@@ -40,7 +40,7 @@
         }
         .menu {
             display: flex;
-            gap: 200px;
+            gap: 60px;
         }
         .menu a {
             color: #fff;
@@ -187,12 +187,13 @@
         </div>
         <div class="menu">
             <a href="#">Home</a>
-            <a href="#">Games</a>
+            <a href="login.php">Games</a>
             <a href="#">About</a>
-            <a href="#">Login</a>
+            <a href="login.php">Login</a>
         </div>
     </nav>
     <hr style = " background-color: #464545ff; height: 1px; border: none;">
+    
     <section class="main-content">
         <h1>Ignite Your Mind <span>🔥</span></h1>
         <p>Play Wordle & Quiz. Challenge your brain, compete with friends, and win!</p>

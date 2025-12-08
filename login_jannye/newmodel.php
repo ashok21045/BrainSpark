@@ -355,7 +355,7 @@
               <span>4.8</span>
             </div>
             <p>Guess the secret word in limited tries.</p>
-            <div class="mt-auto"><a href="games/wordle.html" class="btn btn-primary play-btn w-100">Play Now</a></div>
+            <div class="mt-auto"><a href="../games/wordle/w.html" class="btn btn-primary play-btn w-100">Play Now</a></div>
           </div>
         </div>
       </div>
@@ -370,7 +370,7 @@
               <span>4.8</span>
             </div>
             <p>Test your knowledge across multiple topics.</p>
-            <div class="mt-auto"><a href="games/quiz.html" class="btn btn-primary play-btn w-100">Start Quiz</a></div>
+            <div class="mt-auto"><a href="../games/quiz/quiz.html" class="btn btn-primary play-btn w-100">Start Quiz</a></div>
           </div>
         </div>
       </div>
@@ -458,7 +458,7 @@
               <span>4.8</span>
             </div>
             <p>Guess the secret word in limited tries.</p>
-            <div class="mt-auto"><a href="games/wordle.html" class="btn btn-primary play-btn w-100">Play Now</a></div>
+            <div class="mt-auto"><a href="../games/wordle/wordle.html" class="btn btn-primary play-btn w-100">Play Now</a></div>
           </div>
         </div>
       </div>
@@ -473,7 +473,7 @@
               <span>4.8</span>
             </div>
             <p>Test your knowledge across multiple topics.</p>
-            <div class="mt-auto"><a href="games/quiz.html" class="btn btn-primary play-btn w-100">Start Quiz</a></div>
+            <div class="mt-auto"><a href="../games/quiz/quiz.html" class="btn btn-primary play-btn w-100">Start Quiz</a></div>
           </div>
         </div>
       </div>
@@ -591,7 +591,7 @@
               <span>4.8</span>
             </div>
             <p>Guess the secret word in limited tries.</p>
-            <div class="mt-auto"><a href="games/wordle.html" class="btn btn-primary play-btn w-100">Play Now</a></div>
+            <div class="mt-auto"><a href="../games/wordle/wordle.html" class="btn btn-primary play-btn w-100">Play Now</a></div>
           </div>
         </div>
       </div>
@@ -606,7 +606,7 @@
               <span>4.8</span>
             </div>
             <p>Test your knowledge across multiple topics.</p>
-            <div class="mt-auto"><a href="games/quiz.html" class="btn btn-primary play-btn w-100">Start Quiz</a></div>
+            <div class="mt-auto"><a href="../games/quiz/quiz.html" class="btn btn-primary play-btn w-100">Start Quiz</a></div>
           </div>
         </div>
       </div>

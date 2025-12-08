@@ -1,0 +1,66 @@
+
+
+<html>
+    <head>
+        <title>Wordle</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+
+        <link rel="stylesheet" href="w.css">
+        <script src="getwords.php"></script>
+        <script src="ww.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <script>
+$(document).ready(function(){
+  $(".but").click(function(){
+    $("#keyboardw").toggle();
+  });
+});
+</script>
+   
+
+    </head>
+
+    <body>
+
+     <nav class="navbar">
+        <div class="logo-group">
+            <img src="../quiz/logo2.png" alt="BrainSpark Logo">
+            <span class="brand-text">BrainSpark</span>
+        </div>
+        
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="login.php">Games</a>
+            <a href="#">About</a>
+            <a href="login.php">Login</a>
+        </div>
+    </nav>
+   
+        
+
+       
+      <div id="title"><h1>Wordle</h1></div>
+        <div class="main">
+            <div id="board">
+            </div>
+            <div class="se">
+               <div class="result"> <h2>Congrats You found the word!</h2> </div>
+                <div class="record"> 
+                    <h3>Current streak: 0🔥</h3>
+                    <h3>Highest streak: 0🔥</h3>
+                    <h3>Total correct: 0🔥</h3>
+                    <button class="restart">Restart</button>
+                </div>
+               
+            </div>
+        </div>
+
+        <br>
+        <h1 id="answer"></h1>
+        <button class="but">hide keyboard</button>
+        <div id="keyboardw"></div>
+
+    </body>
+</html>

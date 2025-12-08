@@ -4,7 +4,7 @@ $showfail = false;
   $showalready= false;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    include 'partials/_test.php';
+    include '../partials/_test.php';
 
     $username = $_POST["username"];
     $password = $_POST["password"];

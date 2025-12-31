@@ -168,7 +168,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <div class="main-wrapper">
         <div class="signup-container">
             <div class="brand">
-                <img src="logo.png" alt="BrainSpark Logo" class="logo">
+                <img src="../partials/logo.png" alt="BrainSpark Logo" class="logo">
                 <h2 class="logo-title">BrainSpark</h2>
             </div>
 

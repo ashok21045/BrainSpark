@@ -53,14 +53,22 @@ $user = [
 
 <nav class="navbar">
     <div class="logo-group">
-        <img src="../quiz/logo2.png" alt="BrainSpark Logo">
+        <img class="logo" src="../quiz/logo2.png" alt="BrainSpark Logo">
         <span class="brand-text">BrainSpark</span>
     </div>
+
     <div class="menu">
         <a href="../../login_jannye/newmodel.php">Home</a>
-        <a href="login.php">Games</a>
+        <a href="../../login_jannye/newmodel.php">Games</a>
         <a href="#">About</a>
         <a href="../../login_jannye/index.php">Logout</a>
+    </div>
+
+    <!-- Profile Picture -->
+   
+    <div class="profile" style="display: flex; align-items: center;">
+       <h4>  <?php echo $username ?>&nbsp; &nbsp;</h4>
+        <img src="../../login_jannye/photos/defaultuser.jpg" alt="Profile" class="profile-pic" width="40" height="40" style="object-fit: cover;">
     </div>
 </nav>
 

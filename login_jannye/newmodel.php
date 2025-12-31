@@ -92,6 +92,11 @@
             top: 10px;
             color: #9aa5be;
         }
+        .search-item:hover {
+  background: #f0f4fb;
+  color: #1750c3;
+}
+
 
         /* Slider Container */
 .slider-container {
@@ -146,8 +151,8 @@
     font-weight: bold;
     color: white;
     cursor: pointer;
-    padding: 10px 18px;
-    background: rgba(0,0,0,0.35);
+    padding: 10px 30px;
+    background: rgba(225, 218, 218, 0.35);
     border-radius: 50%;
     transition: 0.3s;
 }
@@ -330,7 +335,16 @@
       <!-- Search -->
       <form class="d-flex ms-lg-4 nav-search me-3">
         <i class="bi bi-search"></i>
-        <input class="form-control me-2" type="search" placeholder="Search games..." aria-label="Search">
+<input class="form-control"
+       id="gameSearch"
+       type="search"
+       placeholder="Search games..."
+       autocomplete="off">
+       <div id="searchResults"
+     class="position-absolute bg-white shadow rounded mt-1"
+     style="width:260px; display:none; z-index:1000;">
+</div>
+
       </form>
 
       <!-- Profile Dropdown -->
@@ -349,7 +363,8 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
 // If user has profile image, use it, otherwise show default
-$profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
+$profileImg = (!empty($row['image'])) ? $row['image'] : 'photos/defaultuser.jpg';
+$_SESSION['profilepic']=$profileImg;
 ?>
 <img src="<?php echo $profileImg; ?>" class="rounded-circle" width="40" height="40" style="object-fit: cover;">
 
@@ -386,14 +401,15 @@ $profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
             <img src="./photos/ws.png" alt="Wordle Trending">
         </div>
         <div class="slide">
+            <img src="./photos/snake.png" alt="Memory Game">
+        </div>
+        <div class="slide">
             <img src="./photos/puzzle.jpg" alt="Quiz Trending">
         </div>
         <div class="slide">
             <img src="./photos/quiz.jpg" alt="Puzzle Trending">
         </div>
-        <div class="slide">
-            <img src="./photos/snake.jpg" alt="Memory Game">
-        </div>
+        
     </div>
 
     <!-- Arrows -->
@@ -582,7 +598,7 @@ $profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
       <!-- Snake -->
       <div class="col h-100 d-flex align-items-stretch">
         <div class="game-card h-100 d-flex flex-column">
-          <img src="./photos/snake.jpg" class="game-img" alt="Snake And Ladder">
+          <img src="./photos/snake.png" class="game-img" alt="Snake And Ladder">
           <div class="game-body d-flex flex-column flex-grow-1" style="flex:1 1 auto; min-height:205px;">
             <h4>Snake And Ladder</h4>
             <div class="rating">
@@ -662,7 +678,13 @@ $profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
               <span>4.8</span>
             </div>
             <p>Guess the secret word in limited tries.</p>
-            <div class="mt-auto"><a href="../games/wordle/wordle.html" class="btn btn-primary play-btn w-100">Play Now</a></div>
+            <div class="mt-auto"><a href="../games/wordle/w.php"
+   class="btn btn-primary play-btn w-100 game-link"
+   data-title="wordle"
+   data-url="../games/wordle/w.php">
+   Play Now
+</a>
+</div>
           </div>
         </div>
       </div>
@@ -677,7 +699,13 @@ $profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
               <span>4.8</span>
             </div>
             <p>Test your knowledge across multiple topics.</p>
-            <div class="mt-auto"><a href="../games/quiz/quiz.html" class="btn btn-primary play-btn w-100">Start Quiz</a></div>
+            <div class="mt-auto"><a href="../games/quiz/quiz.html"
+   class="btn btn-primary play-btn w-100 game-link"
+   data-title="quiz master"
+   data-url="../games/quiz/quiz.html">
+   Start Quiz
+</a>
+</div>
           </div>
         </div>
       </div>
@@ -707,7 +735,11 @@ $profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
               <span>3.5</span>
             </div>
             <p>Improve typing speed & accuracy.</p>
-            <div class="mt-auto"><a href="games/typing.html" class="btn btn-primary play-btn w-100">Start Typing</a></div>
+            <div class="mt-auto"><a href="games/typing.html" class="btn btn-primary play-btn w-100 game-link"
+   data-title="typing"
+   data-url="../games/wordle/w.php">
+   Play Now
+</a></div>
           </div>
         </div>
       </div>
@@ -722,7 +754,11 @@ $profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
               <span>4.8</span>
             </div>
             <p>Move blocks & solve creative puzzles.</p>
-            <div class="mt-auto"><a href="games/puzzle.html" class="btn btn-primary play-btn w-100">Play Puzzle</a></div>
+            <div class="mt-auto"><a href="games/puzzle.html" class="btn btn-primary play-btn w-100 game-link"
+   data-title="Puzzle Blocks"
+   data-url="../games/wordle/w.php">
+   Play Now
+</a></div>
           </div>
         </div>
       </div>
@@ -737,7 +773,11 @@ $profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
               <span>3.8</span>
             </div>
             <p>Classic snake arcade – eat, grow, survive!</p>
-            <div class="mt-auto"><a href="games/snake.html" class="btn btn-primary play-btn w-100">Play Snake</a></div>
+            <div class="mt-auto"><a href="games/snake.html" class="btn btn-primary play-btn w-100 game-link"
+   data-title="snake"
+   data-url="../games/wordle/w.php">
+   Play Now
+</a></div>
           </div>
         </div>
       </div>
@@ -752,7 +792,11 @@ $profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
               <span>3.5</span>
             </div>
             <p>Use logic to fill the number grid.</p>
-            <div class="mt-auto"><a href="games/sudoku.html" class="btn btn-primary play-btn w-100">Play Now</a></div>
+            <div class="mt-auto"><a href="games/sudoku.html" class="btn btn-primary play-btn w-100 game-link"
+   data-title="Sudoku"
+   data-url="../games/wordle/w.php">
+   Play Now
+</a></div>
           </div>
         </div>
       </div>
@@ -767,7 +811,11 @@ $profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
               <span>3.0</span>
             </div>
             <p>Classic game against friend.Only two players can play.</p>
-            <div class="mt-auto"><a href="games/tictactoe.html" class="btn btn-primary play-btn w-100">Play</a></div>
+            <div class="mt-auto"><a href="games/tictactoe.html" class="btn btn-primary play-btn w-100 game-link"
+   data-title="Tic Tac Toe"
+   data-url="../games/wordle/w.php">
+   Play Now
+</a></div>
           </div>
         </div>
       </div>
@@ -782,7 +830,11 @@ $profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
               <span>3.8</span>
             </div>
             <p>Guess the hidden word carefully using your Mind.</p>
-            <div class="mt-auto"><a href="games/hangman.html" class="btn btn-primary play-btn w-100">Play Hangman</a></div>
+            <div class="mt-auto"><a href="games/hangman.html" class="btn btn-primary play-btn w-100 game-link"
+   data-title="hungman"
+   data-url="../games/wordle/w.php">
+   Play Now
+</a></div>
           </div>
         </div>
       </div>
@@ -797,7 +849,11 @@ $profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
               <span>3.7</span>
             </div>
             <p>Avoid the hidden mines using logic.</p>
-            <div class="mt-auto"><a href="games/minesweeper.html" class="btn btn-primary play-btn w-100">Play Mines</a></div>
+            <div class="mt-auto"><a href="games/minesweeper.html" class="btn btn-primary play-btn w-100 game-link"
+   data-title="Minesweeper"
+   data-url="../games/wordle/w.php">
+   Play Now
+</a></div>
           </div>
         </div>
       </div>
@@ -812,7 +868,11 @@ $profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
               <span>3.5</span>
             </div>
             <p>Merge tiles to reach the 2048 block.</p>
-            <div class="mt-auto"><a href="games/2048.html" class="btn btn-primary play-btn w-100">Play 2048</a></div>
+            <div class="mt-auto"><a href="games/2048.html" class="btn btn-primary play-btn w-100 game-link"
+   data-title="2048"
+   data-url="../games/wordle/w.php">
+   Play Now
+</a></div>
           </div>
         </div>
       </div>
@@ -827,7 +887,11 @@ $profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
               <span>4.0</span>
             </div>
             <p>Shoot asteroids and survive in space!</p>
-            <div class="mt-auto"><a href="games/spaceshooter.html" class="btn btn-primary play-btn w-100">Start Shooting</a></div>
+            <div class="mt-auto"><a href="games/spaceshooter.html" class="btn btn-primary play-btn w-100 game-link"
+   data-title="space shooter"
+   data-url="../games/wordle/w.php">
+   Play Now
+</a></div>
           </div>
         </div>
       </div>
@@ -902,10 +966,10 @@ $profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
         <div>
           <div class="fw-bold mb-2">Follow Us</div>
           <div class="social-icons">
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-twitter-x"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/ashok.poudel.182490"><i class="bi bi-facebook"></i></a>
+            <a href="https://x.com/"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://www.instagram.com/a.ok2022/"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/ashok-poudel-a97460359/"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
       </div>
@@ -927,7 +991,7 @@ $profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
       </div>
 
       <div class="modal-body">
-        <div class="row g-3">
+        <div class="row g-6">
 
           <!-- Add your available profile images -->
           <div class="col-4">
@@ -938,6 +1002,33 @@ $profileImg = (!empty($row['image'])) ? $row['image'] : 'uploads/default.png';
           </div>
           <div class="col-4">
             <img src="./photos/boy3.jpg" class="img-fluid selectable-profile" style="border-radius:12px; cursor:pointer;">
+          </div>
+           <div class="col-4">
+            <img src="./photos/boy4.jpg" class="img-fluid selectable-profile" style="border-radius:12px; cursor:pointer;">
+          </div>
+           <div class="col-4">
+            <img src="./photos/boy5.jpg" class="img-fluid selectable-profile" style="border-radius:12px; cursor:pointer;">
+          </div>
+           <div class="col-4">
+            <img src="./photos/boy6.jpg" class="img-fluid selectable-profile" style="border-radius:12px; cursor:pointer;">
+          </div>
+           <div class="col-4">
+            <img src="./photos/girl1.jpg" class="img-fluid selectable-profile" style="border-radius:12px; cursor:pointer;">
+          </div>
+           <div class="col-4">
+            <img src="./photos/girl2.jpg" class="img-fluid selectable-profile" style="border-radius:12px; cursor:pointer;">
+          </div>
+           <div class="col-4">
+            <img src="./photos/girl3.jpg" class="img-fluid selectable-profile" style="border-radius:12px; cursor:pointer;">
+          </div>
+           <div class="col-4">
+            <img src="./photos/girl4.jpg" class="img-fluid selectable-profile" style="border-radius:12px; cursor:pointer;">
+          </div>
+           <div class="col-4">
+            <img src="./photos/girl5.jpg" class="img-fluid selectable-profile" style="border-radius:12px; cursor:pointer;">
+          </div>
+           <div class="col-4">
+            <img src="./photos/girl6.jpg" class="img-fluid selectable-profile" style="border-radius:12px; cursor:pointer;">
           </div>
 
         </div>
@@ -1079,6 +1170,50 @@ document.querySelector(".next").onclick = () => {
 };
 </script>
 
+<script>
+const searchInput = document.getElementById("gameSearch");
+const resultsBox = document.getElementById("searchResults");
+const games = document.querySelectorAll(".game-link");
+
+searchInput.addEventListener("input", function () {
+  let query = this.value.toLowerCase();
+  resultsBox.innerHTML = "";
+
+  if (query === "") {
+    resultsBox.style.display = "none";
+    return;
+  }
+
+  let found = false;
+
+  games.forEach(game => {
+    let title = game.dataset.title;
+
+    if (title.includes(query)) {
+      found = true;
+      let div = document.createElement("div");
+      div.className = "px-3 py-2 search-item";
+      div.style.cursor = "pointer";
+      div.innerText = game.dataset.title.toUpperCase();
+
+      div.onclick = () => {
+        window.location.href = game.dataset.url;
+      };
+
+      resultsBox.appendChild(div);
+    }
+  });
+
+  resultsBox.style.display = found ? "block" : "none";
+});
+
+// Hide results when clicking outside
+document.addEventListener("click", function (e) {
+  if (!searchInput.contains(e.target)) {
+    resultsBox.style.display = "none";
+  }
+});
+</script>
 
 </body>
 </html>

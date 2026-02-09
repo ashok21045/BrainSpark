@@ -384,7 +384,7 @@ $_SESSION['profilepic']=$profileImg;
   </a></li>
 
   <li><hr class="dropdown-divider"></li>
-  <li><a class="dropdown-item text-danger" href="index.php">Logout</a></li>
+  <li><a class="dropdown-item text-danger" href="index.html">Logout</a></li>
 </ul>
 
       </div>
@@ -457,7 +457,7 @@ $_SESSION['profilepic']=$profileImg;
               <span>4.8</span>
             </div>
             <p>Test your knowledge across multiple topics.</p>
-            <div class="mt-auto"><a href="../games/quiz/quiz.html" class="btn btn-primary play-btn w-100">Start Quiz</a></div>
+            <div class="mt-auto"><a href="https://www.proprofs.com/quiz-school/story.php?title=kbc1" class="btn btn-primary play-btn w-100">Start Quiz</a></div>
           </div>
         </div>
       </div>
@@ -472,7 +472,7 @@ $_SESSION['profilepic']=$profileImg;
               <span>3.3</span>
             </div>
             <p>Flip & match cards to boost your memory.</p>
-            <div class="mt-auto"><a href="games/memory.html" class="btn btn-primary play-btn w-100">Play Game</a></div>
+            <div class="mt-auto"><a href="https://asklistenlearn.org/play/memory-flip/" class="btn btn-primary play-btn w-100">Play Game</a></div>
           </div>
         </div>
       </div>
@@ -488,7 +488,7 @@ $_SESSION['profilepic']=$profileImg;
               <span>3.0</span>
             </div>
             <p>Classic game against friend.Only two players can play.</p>
-            <div class="mt-auto"><a href="games/tictactoe.html" class="btn btn-primary play-btn w-100">Play</a></div>
+            <div class="mt-auto"><a href="https://playtictactoe.org/" class="btn btn-primary play-btn w-100">Play</a></div>
           </div>
         </div>
       </div>
@@ -503,7 +503,7 @@ $_SESSION['profilepic']=$profileImg;
               <span>3.8</span>
             </div>
             <p>Guess the hidden word carefully using your Mind.</p>
-            <div class="mt-auto"><a href="games/hangman.html" class="btn btn-primary play-btn w-100">Play Hangman</a></div>
+            <div class="mt-auto"><a href="https://poki.com/tl/g/hangman#utm_source=redirect-en-tl" class="btn btn-primary play-btn w-100">Play Hangman</a></div>
           </div>
         </div>
       </div>
@@ -519,7 +519,7 @@ $_SESSION['profilepic']=$profileImg;
               <span>4.0</span>
             </div>
             <p>Shoot asteroids and survive in space!</p>
-            <div class="mt-auto"><a href="games/spaceshooter.html" class="btn btn-primary play-btn w-100">Start Shooting</a></div>
+            <div class="mt-auto"><a href="https://www.crazygames.com/game/starblastio" class="btn btn-primary play-btn w-100">Start Shooting</a></div>
           </div>
         </div>
       </div>
@@ -545,7 +545,7 @@ $_SESSION['profilepic']=$profileImg;
               <span>4.8</span>
             </div>
             <p>Guess the secret word in limited tries.</p>
-            <div class="mt-auto"><a href="../games/wordle/wordle.html" class="btn btn-primary play-btn w-100">Play Now</a></div>
+            <div class="mt-auto"><a href="../games/wordle/w.php" class="btn btn-primary play-btn w-100">Play Now</a></div>
           </div>
         </div>
       </div>
@@ -560,7 +560,7 @@ $_SESSION['profilepic']=$profileImg;
               <span>4.8</span>
             </div>
             <p>Test your knowledge across multiple topics.</p>
-            <div class="mt-auto"><a href="../games/quiz/quiz.html" class="btn btn-primary play-btn w-100">Start Quiz</a></div>
+            <div class="mt-auto"><a href="https://www.proprofs.com/quiz-school/story.php?title=kbc1" class="btn btn-primary play-btn w-100">Start Quiz</a></div>
           </div>
         </div>
       </div>
@@ -575,7 +575,7 @@ $_SESSION['profilepic']=$profileImg;
               <span>3.3</span>
             </div>
             <p>Flip & match cards to boost your memory.</p>
-            <div class="mt-auto"><a href="games/memory.html" class="btn btn-primary play-btn w-100">Play Game</a></div>
+            <div class="mt-auto"><a href="https://asklistenlearn.org/play/memory-flip/" class="btn btn-primary play-btn w-100">Play Game</a></div>
           </div>
         </div>
       </div>
@@ -606,7 +606,7 @@ $_SESSION['profilepic']=$profileImg;
               <span>3.8</span>
             </div>
             <p>Classic snake arcade – eat, grow, survive!</p>
-            <div class="mt-auto"><a href="games/snake.html" class="btn btn-primary play-btn w-100">Play Snake</a></div>
+            <div class="mt-auto"><a href="https://www.crazygames.com/game/snakes-and-ladders" class="btn btn-primary play-btn w-100">Play Snake</a></div>
           </div>
         </div>
       </div>
@@ -621,7 +621,7 @@ $_SESSION['profilepic']=$profileImg;
               <span>3.5</span>
             </div>
             <p>Use logic to fill the number grid.</p>
-            <div class="mt-auto"><a href="games/sudoku.html" class="btn btn-primary play-btn w-100">Play Now</a></div>
+            <div class="mt-auto"><a href="https://sudoku.com/" class="btn btn-primary play-btn w-100">Play Now</a></div>
           </div>
         </div>
       </div>
@@ -636,7 +636,7 @@ $_SESSION['profilepic']=$profileImg;
               <span>3.0</span>
             </div>
             <p>Classic game against friend.Only two players can play.</p>
-            <div class="mt-auto"><a href="games/tictactoe.html" class="btn btn-primary play-btn w-100">Play</a></div>
+            <div class="mt-auto"><a href="https://playtictactoe.org/" class="btn btn-primary play-btn w-100">Play</a></div>
           </div>
         </div>
       </div>
@@ -651,7 +651,7 @@ $_SESSION['profilepic']=$profileImg;
               <span>3.8</span>
             </div>
             <p>Guess the hidden word carefully using your Mind.</p>
-            <div class="mt-auto"><a href="games/hangman.html" class="btn btn-primary play-btn w-100">Play Hangman</a></div>
+            <div class="mt-auto"><a href="https://poki.com/tl/g/hangman#utm_source=redirect-en-tl" class="btn btn-primary play-btn w-100">Play Hangman</a></div>
           </div>
         </div>
       </div>
@@ -699,10 +699,10 @@ $_SESSION['profilepic']=$profileImg;
               <span>4.8</span>
             </div>
             <p>Test your knowledge across multiple topics.</p>
-            <div class="mt-auto"><a href="../games/quiz/quiz.html"
+            <div class="mt-auto"><a href="https://www.proprofs.com/quiz-school/story.php?title=kbc1"
    class="btn btn-primary play-btn w-100 game-link"
-   data-title="quiz master"
-   data-url="../games/quiz/quiz.html">
+   data-title="Quiz"
+   data-url="https://www.proprofs.com/quiz-school/story.php?title=kbc1">
    Start Quiz
 </a>
 </div>
@@ -720,7 +720,9 @@ $_SESSION['profilepic']=$profileImg;
               <span>3.3</span>
             </div>
             <p>Flip & match cards to boost your memory.</p>
-            <div class="mt-auto"><a href="games/memory.html" class="btn btn-primary play-btn w-100">Play Game</a></div>
+            <div class="mt-auto"><a href="https://asklistenlearn.org/play/memory-flip/" class="btn btn-primary play-btn w-100 game-link"
+   data-title="Memory Game"
+   data-url="https://asklistenlearn.org/play/memory-flip/">Play Game</a></div>
           </div>
         </div>
       </div>
@@ -754,9 +756,9 @@ $_SESSION['profilepic']=$profileImg;
               <span>4.8</span>
             </div>
             <p>Move blocks & solve creative puzzles.</p>
-            <div class="mt-auto"><a href="games/puzzle.html" class="btn btn-primary play-btn w-100 game-link"
+            <div class="mt-auto"><a href="https://www.crazygames.com/game/block-puzzle" class="btn btn-primary play-btn w-100 game-link"
    data-title="Puzzle Blocks"
-   data-url="../games/wordle/w.php">
+   data-url="https://www.crazygames.com/game/block-puzzle">
    Play Now
 </a></div>
           </div>
@@ -773,9 +775,9 @@ $_SESSION['profilepic']=$profileImg;
               <span>3.8</span>
             </div>
             <p>Classic snake arcade – eat, grow, survive!</p>
-            <div class="mt-auto"><a href="games/snake.html" class="btn btn-primary play-btn w-100 game-link"
-   data-title="snake"
-   data-url="../games/wordle/w.php">
+            <div class="mt-auto"><a href="https://www.crazygames.com/game/snakes-and-ladders" class="btn btn-primary play-btn w-100 game-link"
+   data-title="snake and ladder"
+   data-url="https://www.crazygames.com/game/snakes-and-ladders">
    Play Now
 </a></div>
           </div>
@@ -792,9 +794,9 @@ $_SESSION['profilepic']=$profileImg;
               <span>3.5</span>
             </div>
             <p>Use logic to fill the number grid.</p>
-            <div class="mt-auto"><a href="games/sudoku.html" class="btn btn-primary play-btn w-100 game-link"
+            <div class="mt-auto"><a href="https://sudoku.com/" class="btn btn-primary play-btn w-100 game-link"
    data-title="Sudoku"
-   data-url="../games/wordle/w.php">
+   data-url="https://sudoku.com/">
    Play Now
 </a></div>
           </div>
@@ -811,9 +813,9 @@ $_SESSION['profilepic']=$profileImg;
               <span>3.0</span>
             </div>
             <p>Classic game against friend.Only two players can play.</p>
-            <div class="mt-auto"><a href="games/tictactoe.html" class="btn btn-primary play-btn w-100 game-link"
+            <div class="mt-auto"><a href="https://playtictactoe.org/" class="btn btn-primary play-btn w-100 game-link"
    data-title="Tic Tac Toe"
-   data-url="../games/wordle/w.php">
+   data-url="https://playtictactoe.org/">
    Play Now
 </a></div>
           </div>
@@ -830,9 +832,9 @@ $_SESSION['profilepic']=$profileImg;
               <span>3.8</span>
             </div>
             <p>Guess the hidden word carefully using your Mind.</p>
-            <div class="mt-auto"><a href="games/hangman.html" class="btn btn-primary play-btn w-100 game-link"
+            <div class="mt-auto"><a href="https://poki.com/tl/g/hangman#utm_source=redirect-en-tl" class="btn btn-primary play-btn w-100 game-link"
    data-title="hungman"
-   data-url="../games/wordle/w.php">
+   data-url="https://poki.com/tl/g/hangman#utm_source=redirect-en-tl">
    Play Now
 </a></div>
           </div>
@@ -849,9 +851,9 @@ $_SESSION['profilepic']=$profileImg;
               <span>3.7</span>
             </div>
             <p>Avoid the hidden mines using logic.</p>
-            <div class="mt-auto"><a href="games/minesweeper.html" class="btn btn-primary play-btn w-100 game-link"
-   data-title="Minesweeper"
-   data-url="../games/wordle/w.php">
+            <div class="mt-auto"><a href="https://minesweeperonline.com/" class="btn btn-primary play-btn w-100 game-link"
+   data-title="minesweeper"
+   data-url="https://minesweeperonline.com/">
    Play Now
 </a></div>
           </div>
@@ -868,9 +870,9 @@ $_SESSION['profilepic']=$profileImg;
               <span>3.5</span>
             </div>
             <p>Merge tiles to reach the 2048 block.</p>
-            <div class="mt-auto"><a href="games/2048.html" class="btn btn-primary play-btn w-100 game-link"
+            <div class="mt-auto"><a href="https://2048game.com/?ref=google-search-classic&gad_campaignid=12688850565" class="btn btn-primary play-btn w-100 game-link"
    data-title="2048"
-   data-url="../games/wordle/w.php">
+   data-url="https://2048game.com/?ref=google-search-classic&gad_campaignid=12688850565">
    Play Now
 </a></div>
           </div>
@@ -887,9 +889,9 @@ $_SESSION['profilepic']=$profileImg;
               <span>4.0</span>
             </div>
             <p>Shoot asteroids and survive in space!</p>
-            <div class="mt-auto"><a href="games/spaceshooter.html" class="btn btn-primary play-btn w-100 game-link"
+            <div class="mt-auto"><a href="https://www.crazygames.com/game/starblastio" class="btn btn-primary play-btn w-100 game-link"
    data-title="space shooter"
-   data-url="../games/wordle/w.php">
+   data-url="https://www.crazygames.com/game/starblastio">
    Play Now
 </a></div>
           </div>

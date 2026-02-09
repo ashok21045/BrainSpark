@@ -183,7 +183,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <div class="extra-links">
                 <p>Don't have an account? <a href="signup.php">Sign up</a></p>
-                <p><a href="#">Forgot Password?</a></p>
+                <p><a href="../admin/admin_login.php">Are you an admin?</a></p>
             </div>
         </div>
     </div>

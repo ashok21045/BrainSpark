@@ -19,19 +19,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $password = $_POST["password"];
     $exist = false;
     
-    $sql1= "Select * from user where username= '$username' AND password = '$password' ";
+    $sql1= "Select * from user where username= '$username'";
     $res = mysqli_query($conn, $sql1);
     $num = mysqli_num_rows($res);
-    if($num==1){
-        $exist = true;
-        $_SESSION['username'] = $username;
-        $_SESSION['exist']=true;
-        header("Location: newmodel.php");
-        exit();
+  if ($num == 1) {
+
+        // ✅ fetch user row
+        $row = mysqli_fetch_assoc($res);
+
+        // ✅ verify hashed password
+        if (password_verify($password, $row['password'])) {
+
+            $_SESSION['username'] = $username;
+            $_SESSION['exist'] = true;
+
+            header("Location: newmodel.php");
+            exit();
+        }
+        else {
+            $alert = true;
+        }
     }
-    else{
-        $alert= true;
+    else {
+        $alert = true;
     }
+
 
 }
 

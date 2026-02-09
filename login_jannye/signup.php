@@ -1,54 +1,71 @@
 <?php
 $showalert = false;
 $showfail = false;
-  $showalready= false;
+$showalready = false;
+$showinvalid = false;
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     include '../partials/_test.php';
 
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    $username  = trim($_POST["username"]);
+    $password  = $_POST["password"];
     $cpassword = $_POST["cpassword"];
-    $exist = false;
-    
-    $sql1= "Select * from user where username= '$username' ";
-    $res = mysqli_query($conn, $sql1);
-    $num = mysqli_num_rows($res);
-    if($num==1){
-        $exist = true;
+
+    // ---------- 1. EMAIL VALIDATION ----------
+    if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
+        $showinvalid = "Invalid email format!";
     }
 
-    if(($cpassword==$password) && $exist==false){
-
-    $sql = "INSERT INTO `user` (`username`, `password`, `cpassword`) VALUES ('$username', '$password', '$cpassword')";
-    $sql1 =  "INSERT INTO `scoreboard` (`username`) VALUES ('$username')";
-    $result= mysqli_query($conn, $sql);
-    $result1= mysqli_query($conn, $sql1);
-
-
-    if($result && $result1){
-        $showalert = true;
-        session_start();
-        $_SESSION['showalert']= true;
-        header("Location: login.php");
-
-    } 
-    else{
-        echo 'database error';
+    // ---------- 2. PASSWORD VALIDATION ----------
+    elseif (
+        strlen($password) < 6 ||
+        !preg_match('/[0-9]/', $password) ||
+        !preg_match('/[\W_]/', $password)
+    ) {
+        $showinvalid = "Password must be at least 6 characters and include 1 number & 1 special character!";
     }
-}
-    else{
-        if($cpassword!=$password){
-            $showfail= true;
+
+    // ---------- 3. PASSWORD MATCH ----------
+    elseif ($password !== $cpassword) {
+        $showfail = true;
+    }
+
+    else {
+
+        // ---------- 4. CHECK EXISTING USER ----------
+        $sql = "SELECT * FROM user WHERE username = '$username'";
+        $res = mysqli_query($conn, $sql);
+        $num = mysqli_num_rows($res);
+
+        if ($num > 0) {
+            $showalready = true;
         }
-        else{
-            $showalready= true;
+        else {
+            // ---------- 5. HASH PASSWORD ----------
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+
+            // ---------- 6. INSERT DATA ----------
+            $sql1 = "INSERT INTO user (username, password) VALUES ('$username', '$hash')";
+            $sql2 = "INSERT INTO scoreboard (username) VALUES ('$username')";
+
+            $result1 = mysqli_query($conn, $sql1);
+            $result2 = mysqli_query($conn, $sql2);
+
+            if ($result1 && $result2) {
+                session_start();
+                $_SESSION['showalert'] = true;
+                header("Location: login.php");
+                exit();
+            }
+            else {
+                echo "Database error!";
+            }
         }
     }
-    
-
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -145,23 +162,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </style>
 </head>
 <body>
-    <?php
+<?php
+if ($showinvalid) {
+    echo '
+    <div class="alert alert-warning alert-dismissible fade show text-center fixed-top m-0 rounded-0" role="alert">
+        <strong>' . $showinvalid . '</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>';
+}
 
-     if ($showfail){
-            // Alert at top
-        echo '  <div class="alert alert-danger alert-dismissible fade show text-center fixed-top m-0 rounded-0" role="alert">
-        <strong> Sorry! your password dosen\'t matchh.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+if ($showfail) {
+    echo '
+    <div class="alert alert-danger alert-dismissible fade show text-center fixed-top m-0 rounded-0" role="alert">
+        <strong>Password does not match!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>';
-    }
-     if ($showalready){
-            // Alert at top
-        echo '  <div class="alert alert-danger alert-dismissible fade show text-center fixed-top m-0 rounded-0" role="alert">
-        <strong> Sorry! username already taken.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+}
+
+if ($showalready) {
+    echo '
+    <div class="alert alert-danger alert-dismissible fade show text-center fixed-top m-0 rounded-0" role="alert">
+        <strong>Email already registered!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>';
-    }
-    ?>
+}
+?>
+
 
 
     <!-- All content inside wrapper -->
@@ -183,6 +209,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="password" id="cpassword" name="cpassword" placeholder="Re-Enter password" required>
 
                 <button type="submit" class="signup-btn">Sign Up</button>
+                <br>
+<a href="login.php" style="display:block; text-align:center; text-decoration:none; color:#38bdf8;">
+    Back to login
+</a>
             </form>
         </div>
     </div>

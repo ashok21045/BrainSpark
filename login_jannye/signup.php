@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username  = trim($_POST["username"]);
     $password  = $_POST["password"];
     $cpassword = $_POST["cpassword"];
+    $name = $_POST["name"];
 
     // ---------- 1. EMAIL VALIDATION ----------
     if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
@@ -46,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $hash = password_hash($password, PASSWORD_DEFAULT);
 
             // ---------- 6. INSERT DATA ----------
-            $sql1 = "INSERT INTO user (username, password) VALUES ('$username', '$hash')";
+            $sql1 = "INSERT INTO user (name, username, password) VALUES ('$name','$username', '$hash')";
             $sql2 = "INSERT INTO scoreboard (username) VALUES ('$username')";
 
             $result1 = mysqli_query($conn, $sql1);
@@ -199,6 +200,9 @@ if ($showalready) {
             </div>
 
             <form class="signup-form" action="signup.php" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter username" required>
 

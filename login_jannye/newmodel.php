@@ -357,6 +357,7 @@ require_once '../partials/_test.php';  // DB connection
 
 $username = $_SESSION['username'];
 
+
 // Fetch profile image from DB
 $sql = "SELECT image FROM user WHERE username = '$username'";
 $result = mysqli_query($conn, $sql);
@@ -365,6 +366,12 @@ $row = mysqli_fetch_assoc($result);
 // If user has profile image, use it, otherwise show default
 $profileImg = (!empty($row['image'])) ? $row['image'] : 'photos/defaultuser.jpg';
 $_SESSION['profilepic']=$profileImg;
+
+$sql1 = "SELECT name FROM user WHERE username = '$username'";
+$result1 = mysqli_query($conn, $sql1);
+$row1 = mysqli_fetch_assoc($result1);
+$name = $row1['name'];
+$_SESSION['name'] = $name;
 ?>
 <img src="<?php echo $profileImg; ?>" class="rounded-circle" width="40" height="40" style="object-fit: cover;">
 
@@ -666,7 +673,7 @@ $_SESSION['profilepic']=$profileImg;
 include '../partials/_test.php';
 
 // Fetch only 'Active' games
-$query = "SELECT * FROM games WHERE status = 'Active' ORDER BY game_id DESC";
+$query = "SELECT * FROM games WHERE status = 'Active' ";
 $res = mysqli_query($conn, $query);
 ?>
 
@@ -985,6 +992,7 @@ document.querySelector(".next").onclick = () => {
 };
 </script>
 
+<!-- search gamee -->
 <script>
 const searchInput = document.getElementById("gameSearch");
 const resultsBox = document.getElementById("searchResults");

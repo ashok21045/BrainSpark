@@ -3,8 +3,8 @@ include 'admin_auth.php';
 include '../partials/_test.php';
 
 if(isset($_GET['block'])){
-    // Sanitize input to prevent SQL injection
-    $block_id = mysqli_real_escape_with_string($conn, $_GET['block']);
+    // Fixed the typo in your function name: mysqli_real_escape_string
+    $block_id = mysqli_real_escape_string($conn, $_GET['block']);
     mysqli_query($conn,"UPDATE user SET status='blocked' WHERE id=".$block_id);
 }
 $users=mysqli_query($conn,"SELECT * FROM user");
@@ -15,44 +15,77 @@ $users=mysqli_query($conn,"SELECT * FROM user");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Management</title>
+    <title>User Management | BrainSpark</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* Modern Reset & Base Styles */
-        * { box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
-        body { background-color: #f4f7fa; margin: 0; padding: 40px; color: #333; }
-        
-        .container { max-width: 900px; margin: 0 auto; }
-
-        /* Sleek Back Button */
-        .back-nav { margin-bottom: 20px; }
-        .back-link {
-            text-decoration: none;
-            color: #6366f1;
-            font-size: 14px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            transition: all 0.3s ease;
+        :root {
+            --sidebar-width: 260px;
         }
-        .back-link:hover { color: #4338ca; transform: translateX(-5px); }
-        .back-link::before { content: '←'; margin-right: 8px; font-size: 18px; }
 
-        h2 { font-size: 28px; font-weight: 700; margin-bottom: 25px; color: #1e293b; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* Glassmorphism Table Design */
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* ===== NAVBAR (Original) ===== */
+        nav {
+            height: 70px;
+            background: #000000;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1001;
+        }
+        .brand { font-weight: 1000; font-size: 1.7rem; display: flex; align-items: center; gap: 12px; color: white; }
+        .name { color: #ef4444; }
+        .logout {
+            background: #ef4444; color: white; padding: 8px 16px;
+            border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px;
+        }
+
+        /* ===== SIDEBAR (Original) ===== */
+        .sidebar {
+            width: var(--sidebar-width);
+            position: fixed; top: 70px; left: 0; bottom: 0;
+            background: #000000; padding: 20px 15px; z-index: 1000;
+        }
+        .sidebar a {
+            display: block; color: #b5bcc6; padding: 12px 20px;
+            text-decoration: none; border-radius: 10px; margin-bottom: 5px;
+            transition: 0.3s;
+        }
+        .sidebar a:hover, .sidebar a.active { background: rgba(255, 255, 255, 0.1); color: #facc15; }
+
+        /* ===== MAIN CONTENT: FULL FIT ===== */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 100px 30px 40px; /* Top padding accounts for navbar */
+        }
+
+        h2 { font-size: 28px; font-weight: 700; margin-bottom: 25px; }
+
         .table-container {
             background: white;
             border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             overflow: hidden;
             border: 1px solid #e2e8f0;
+            width: 100%; /* Perfectly fitted */
         }
 
         table { width: 100%; border-collapse: collapse; text-align: left; }
         
         th {
             background-color: #f8fafc;
-            padding: 16px;
+            padding: 16px 24px;
             text-transform: uppercase;
             font-size: 12px;
             letter-spacing: 0.05em;
@@ -60,18 +93,17 @@ $users=mysqli_query($conn,"SELECT * FROM user");
             border-bottom: 2px solid #f1f5f9;
         }
 
-        td { padding: 16px; border-bottom: 1px solid #f1f5f9; font-size: 15px; }
+        td { padding: 16px 24px; border-bottom: 1px solid #f1f5f9; font-size: 15px; }
         
-        tr:last-child td { border-bottom: none; }
         tr:hover { background-color: #fbfcfe; }
 
         /* Status Badges */
         .status {
-            padding: 4px 10px;
+            padding: 5px 12px;
             border-radius: 20px;
             font-size: 12px;
-            font-weight: 600;
-            text-transform: capitalize;
+            font-weight: 700;
+            text-transform: uppercase;
         }
         .status-active { background: #dcfce7; color: #166534; }
         .status-blocked { background: #fee2e2; color: #991b1b; }
@@ -81,22 +113,30 @@ $users=mysqli_query($conn,"SELECT * FROM user");
             text-decoration: none;
             background-color: #ef4444;
             color: white;
-            padding: 6px 14px;
-            border-radius: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
             font-size: 13px;
             font-weight: 600;
-            transition: background 0.2s;
+            transition: 0.2s;
         }
-        .btn-block:hover { background-color: #dc2626; box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.2); }
+        .btn-block:hover { background-color: #dc2626; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2); }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="back-nav">
-        <a href="dashboard.php" class="back-link">Back to Dashboard</a>
-    </div>
+<nav>
+    <div class="brand"><span class="name">🧠 BrainSpark </span></div>
+    <a href="../login_jannye/logout.php" class="logout">Logout</a>
+</nav>
 
+<div class="sidebar">
+    <a href="dashboard.php">📊 Dashboard</a>
+    <a href="users.php" class="active">👤 Users</a>
+    <a href="games.php">🎮 Games</a>
+    <a href="scoreboard.php">🏆 Scoreboard</a>
+</div>
+
+<div class="main-content">
     <h2>User Management</h2>
 
     <div class="table-container">
@@ -106,7 +146,7 @@ $users=mysqli_query($conn,"SELECT * FROM user");
                     <th>ID</th>
                     <th>Username</th>
                     <th>Status</th>
-                    <th>Action</th>
+                    <th style="text-align: right;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -114,18 +154,18 @@ $users=mysqli_query($conn,"SELECT * FROM user");
                     $statusClass = ($u['status'] == 'blocked') ? 'status-blocked' : 'status-active';
                 ?>
                 <tr>
-                    <td>#<?= $u['id'] ?></td>
-                    <td style="font-weight: 500; color: #1e293b;"><?= htmlspecialchars($u['username']) ?></td>
+                    <td style="color: #64748b;">#<?= $u['id'] ?></td>
+                    <td style="font-weight: 600; color: #0f172a;"><?= htmlspecialchars($u['username']) ?></td>
                     <td>
                         <span class="status <?= $statusClass ?>">
                             <?= htmlspecialchars($u['status']) ?>
                         </span>
                     </td>
-                    <td>
+                    <td style="text-align: right;">
                         <?php if($u['status'] !== 'blocked'): ?>
-                            <a href="?block=<?= $u['id'] ?>" class="btn-block" onclick="return confirm('Block this user?')">Block</a>
+                            <a href="?block=<?= $u['id'] ?>" class="btn-block" onclick="return confirm('Block this user?')">Block User</a>
                         <?php else: ?>
-                            <span style="color: #cbd5e1; font-size: 13px;">No Actions</span>
+                            <span style="color: #cbd5e1; font-size: 13px; font-style: italic;">Access Restricted</span>
                         <?php endif; ?>
                     </td>
                 </tr>

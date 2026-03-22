@@ -6,18 +6,16 @@ include '../partials/_test.php';
 $users = mysqli_fetch_assoc(mysqli_query($conn,"SELECT COUNT(*) total FROM user"))['total'];
 $games = mysqli_fetch_assoc(mysqli_query($conn,"SELECT COUNT(*) total FROM games"))['total'];
 $scores = mysqli_fetch_assoc(mysqli_query($conn,"SELECT COUNT(*) total FROM scoreboard"))['total'];
-$totalPlays = mysqli_fetch_assoc(
-    mysqli_query($conn, "SELECT SUM(total_play) AS total FROM scoreboard")
-)['total'];
+
 // CALCULATIONS BASED ON YOUR IDEA
 $avg_engagement_val = 4.4; // Fixed average in minutes
-$total_engagement_mins = $totalPlays * $avg_engagement_val;
+$total_engagement_mins = $scores * $avg_engagement_val;
 $total_engagement_hours = $total_engagement_mins / 60;
 
 // List of 12 games from your image (Wordle as top performer)
 $game_list = ['Wordle', 'Memory Match', 'Sudoku', 'Tic Tac Toe', 'Hangman', '2048', 'Snake Game', 'Minesweeper', 'Puzzle', 'Crossword', 'Space Shooter', 'Math Quiz'];
 // Simulated engagement data (Wordle highest)
-$game_engagement_data = [1200, 95, 880, 80, 720, 330, 600, 550, 780, 400, 350, 300];
+$game_engagement_data = [1200, 950, 880, 800, 720, 650, 600, 550, 480, 400, 350, 300];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +45,7 @@ $game_engagement_data = [1200, 95, 880, 80, 720, 330, 600, 550, 780, 400, 350, 3
         /* ===== NAVBAR ===== */
         nav {
             height: 70px;
-            background: #000000;
+            background: #0f172a;
             border-bottom: 1px solid #e2e8f0;
             padding: 0 50px;
             display: flex;
@@ -70,7 +68,7 @@ $game_engagement_data = [1200, 95, 880, 80, 720, 330, 600, 550, 780, 400, 350, 3
         .sidebar {
             width: var(--sidebar-width);
             position: fixed; top: 70px; left: 0; bottom: 0;
-            background: #000000; padding: 20px 15px; transition: 0.3s; z-index: 1000;
+            background: #0f172a; padding: 20px 15px; transition: 0.3s; z-index: 1000;
         }
 
         .sidebar a {
@@ -79,7 +77,7 @@ $game_engagement_data = [1200, 95, 880, 80, 720, 330, 600, 550, 780, 400, 350, 3
         }
 
         .sidebar a:hover, .sidebar a.active {
-            background: rgba(255, 255, 255, 0.1); color: #facc15;
+            background: rgba(255,255,255,0.1); color: #facc15;
         }
 
         /* ===== MAIN CONTENT ===== */
@@ -152,17 +150,17 @@ $game_engagement_data = [1200, 95, 880, 80, 720, 330, 600, 550, 780, 400, 350, 3
     <br>
 
     <div class="cards">
-        <div class="card" style="background-color: #8587ea;">
+        <div class="card" style="background-color: #fabc51;">
             <h4>👤 Total Users</h4>
             <h3><?= number_format($users) ?></h3>
         </div>
-        <div class="card" style="background-color: #fabc51;">
+        <div class="card" style="background-color: #10b981;">
             <h4>🎮 Total Games</h4>
             <h3><?= number_format($games) ?></h3>
         </div>
-        <div class="card" style="background-color: #10b981;">
+        <div class="card" style="background-color: #8587ea;">
             <h4>🏆 Total Plays</h4>
-            <h3><?= number_format($totalPlays) ?></h3>
+            <h3><?= number_format($scores) ?></h3>
         </div>
     </div>
 
@@ -215,8 +213,8 @@ new Chart(document.getElementById('overviewChart'), {
         labels: ['Users', 'Games', 'Plays'],
         datasets: [{
             label: 'Count',
-            data: [<?= $users ?>, <?= $games ?>, <?= $totalPlays ?>],
-            backgroundColor: ['#6366f1','#f59e0b','#10b981'],
+            data: [<?= $users ?>, <?= $games ?>, <?= $scores ?>],
+            backgroundColor: ['#f59e0b','#10b981','#6366f1'],
             borderRadius: 8
         }]
     },

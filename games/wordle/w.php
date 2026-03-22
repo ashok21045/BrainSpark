@@ -7,6 +7,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 $username = $_SESSION['username'];
+$namee = $_SESSION['name'];
 
 // Fetch current stats
 $stmt = $conn->prepare("SELECT current_streak, higest_streak, total_wins FROM scoreboard WHERE username = ?");
@@ -31,6 +32,10 @@ $user = [
     "highestStreak" => $highestStreak,
     "totalWins" => $totalWins
 ];
+$sql = "UPDATE scoreboard
+        SET total_play = total_play + 1
+        WHERE username = '$username' AND game_id = 1";
+mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -61,14 +66,14 @@ $user = [
         <a href="../../login_jannye/newmodel.php">Home</a>
         <a href="../../login_jannye/newmodel.php">Games</a>
         <a href="#">About</a>
-        <a href="../../login_jannye/index.php">Logout</a>
+        <a href="../../login_jannye/">Logout</a>
     </div>
 
     <!-- Profile Picture -->
    
     <div class="profile" style="display: flex; align-items: center;">
-       <h4>  <?php echo $username ?>&nbsp; &nbsp;</h4>
-        <img src="../../login_jannye/photos/defaultuser.jpg" alt="Profile" class="profile-pic" width="40" height="40" style="object-fit: cover;">
+       <h4>  <?php echo $namee ?>&nbsp; &nbsp;</h4>
+        <img src="../../login_jannye/photos/uploads/1765549797_download.jpg" alt="Profile" class="profile-pic" width="40" height="40" style="object-fit: cover;">
     </div>
 </nav>
 
